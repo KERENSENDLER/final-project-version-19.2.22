@@ -1,0 +1,47 @@
+package Pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class SearchInProductPage extends BasePage {
+
+    @FindBy(xpath = "//h3[contains(text(),'משלוח מנות - מארז פורים')]")
+    WebElement MagPic;
+
+    @FindBy(xpath = "//body/div[@id='SITE_CONTAINER']/div[@id='main_MF']/div[@id='site-root']/div[@id='masterPage']/" +
+            "main[@id='PAGES_CONTAINER']/div[@id='SITE_PAGES']/div[@id='TRANSITION_GROUP']/div[@id='wih56']/div[2]/div[1]" +
+            "/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/ul[1]/li[1]/button[1]/span[1]")
+    WebElement Cart;
+
+    @FindBy(xpath = "//body/div[@id='SITE_CONTAINER']/div[@id='main_MF']/div[@id='site-root']/div[@id='masterPage']/main" +
+            "[@id='PAGES_CONTAINER']/div[@id='SITE_PAGES']/div[@id='TRANSITION_GROUP']/div[@id='oea74']/div[2]/div[1]/div" +
+            "[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/article[1]/section[2]/div[6]/div[1]/div[1]/div[1]/div" +
+            "[1]/div[1]/div[1]/div[1]/textarea[1]")
+    WebElement Dedication;
+
+    @FindBy(xpath = "//body/div[@id='SITE_CONTAINER']/div[@id='main_MF']/div[@id='site-root']/div[@id='masterPage']/main" +
+            "[@id='PAGES_CONTAINER']/div[@id='SITE_PAGES']/div[@id='TRANSITION_GROUP']/div[@id='oea74']/div[2]/div[1]/div[1]" +
+            "/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/article[1]/section[2]/div[6]/div[1]/div[1]/div[2]/div[1]" +
+            "/div[1]/div[1]/div[1]/div[1]/label[1]/div[1]/input[1]")
+    WebElement Order4;
+
+    public SearchInProductPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public WebElement MagPic() {
+        return MagPic;
+    }
+    public WebElement Cart() {
+              return Cart;
+    }
+    public WebElement Dedication(String Item) {
+        return Dedication;
+    }
+    public WebElement Order4(String Item) {
+        return Order4;
+    }
+}
