@@ -1,0 +1,153 @@
+package tests;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import Pages.InitializePage;
+
+import java.io.IOException;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+
+public class FirstTest extends InitializePage {
+
+    @BeforeTest
+    public void setUp(){
+        super.setUp();
+
+    }
+    @Test (priority = 1)
+    public void SearchResult() {
+         WebElement e = driver.findElement(By.xpath("//html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/header[1]/div[1]/div[2]/div" +
+                "[2]/div[1]/div[1]/section[2]/div[2]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]" +
+                "/div[1]/div[3]/div[1]/div[1]/div[1]/input[1]"));
+         Assert.assertEquals(searchPage.SearchInput("כוסות"), e);
+         searchPage.SearchInput("כוסות").sendKeys("כוסות");
+         searchPage.SearchInput("כוסות").submit();
+    }
+    @Test (priority = 2)
+    public void findPic() {
+         WebElement e = driver.findElement(By.xpath("//body/div[@id='SITE_CONTAINER']/div[@id='main_MF']/div[@id='site-root']" +
+                     "/div[@id='masterPage']/main[@id='PAGES_CONTAINER']/div[@id='SITE_PAGES']/div[@id='TRANSITION_GROUP']" +
+                     "/div[@id='c1dmp']/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/a[1]/wix-image[1]/img[1]"));
+         Assert.assertEquals(searchPage.Pic(), e);
+         searchPage.Pic().click();
+    }
+   @Test (priority = 3)
+   public void getInOffice() {
+         WebElement e = driver.findElement(By.xpath("//span[contains(text(),'למשרד')]"));
+         Assert.assertEquals(searchPage.Office(), e);
+         searchPage.Office().click();
+
+   }
+   @Test (priority = 4)
+   public void getKids() {
+         WebElement e = driver.findElement(By.xpath("//span[contains(text(),'לילדים')]"));
+         Assert.assertEquals(searchPage.getKids(), e);
+         searchPage.getKids().click();
+
+   }
+   @Test (priority = 5)
+   public void searchFaceBook() {
+         WebElement e = driver.findElement(By.xpath("//body/div[@id='SITE_CONTAINER']/div[@id='main_MF']/div[@id='" +
+                         "site-root']/div[@id='masterPage']/main[@id='PAGES_CONTAINER']/div[@id='SITE_PAGES']/div[@id=" +
+                         "'TRANSITION_GROUP']/div[@id='c1dmp']/div[2]/div[1]/div[1]/div[1]/ul[1]/li[1]/a[1]/wix-image[1]/img[1]"));
+         Assert.assertEquals(searchPage.FBook(), e);
+         searchPage.FBook();
+
+   }
+    @Test (priority = 6)
+    public void LogInCheck() {
+        WebElement e = driver.findElement(By.xpath("//html[1]/body[1]/div[1]/div[1]/div[3]" +
+                "/div[1]/header[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/button[1]/span[1]"));
+        assertEquals(searchPage.Login(), e);
+        searchPage.Login().click();
+
+    }
+    @Test (priority = 7)
+    public void FindPicInPage(){
+        driver.navigate().to("https://www.lizard-gifts.com/shop?%D7%90%D7%95%D7%A1%D7%A3=%D7%9E%D7%90%D7%A8%D7%96%D7%99+%D7%9E%D7%AA%D7%A0%D7%94");
+        WebElement b = driver.findElement(By.xpath("//h3[contains(text(),'משלוח מנות - מארז פורים')]"));
+        Assert.assertEquals(productPage.MagPic(), b);
+        productPage.MagPic().click();
+    }
+    @Test (priority = 8)
+    public void AddToCart1(){
+        driver.navigate().to("https://www.lizard-gifts.com/search-results?q=%D7%9B%D7%95%D7%A1%D7%95%D7%AA");
+        WebElement b = driver.findElement(By.xpath("//body/div[@id='SITE_CONTAINER']/div[@id='main_MF']/div[@id='site-root'" +
+                "]/div[@id='masterPage']/main[@id='PAGES_CONTAINER']/div[@id='SITE_PAGES']/div[@id='TRANSITION_GROUP']/div" +
+                "[@id='wih56']/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/" +
+                "div[1]/ul[1]/li[1]/button[1]/span[1]"));
+        Assert.assertEquals(productPage.Cart(), b);
+        productPage.Cart().click();
+
+    }
+    @Test (priority = 9)
+    public void AddToCart2(){
+        driver.navigate().to("https://www.lizard-gifts.com/product-page/%D7%A1%D7%A4%D7%9C-%D7%9E%D7%90%D7%92-%D7%93%D7%92%D7%9D" +
+                "-%D7%9E%D7%9C%D7%9B%D7%94-%D7%9C%D7%91%D7%91%D7%95%D7%AA-%D7%A2%D7%9D-%D7%A9%D7%9D-%D7%95%D7%94%D7%A7%D7%93%D7%A9%D7%94");
+        WebElement b = driver.findElement(By.xpath("//body/div[@id='SITE_CONTAINER']/div[@id='main_MF']/div[@id='site-root']/div[@id='masterPage'" +
+                "]/main[@id='PAGES_CONTAINER']/div[@id='SITE_PAGES']/div[@id='TRANSITION_GROUP']/div[@id='oea74']/div[2]/" +
+                "div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/article[1]/section[2]/div[6]/div[1]/" +
+                "div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/textarea[1]"));
+        Assert.assertEquals(productPage.Dedication("לשכנים האמיצים"), b);
+        productPage.Dedication("לשכנים האמיצים").sendKeys("לשכנים האמיצים");
+
+    }
+    @Test (priority = 10)
+    public void AddToCart3(){
+        driver.navigate().to("https://www.lizard-gifts.com/product-page/%D7%A1%D7%A4%D7%9C-%D7%9E%D7%90%D7%92-%D7%93%D7%92%D7%9D" +
+                    "-%D7%9E%D7%9C%D7%9B%D7%94-%D7%9C%D7%91%D7%91%D7%95%D7%AA-%D7%A2%D7%9D-%D7%A9%D7%9D-%D7%95%D7%94%D7%A7%D7%93%D7%A9%D7%94");
+        WebElement c = driver.findElement(By.xpath("//body/div[@id='SITE_CONTAINER']/div[@id='main_MF']/div[@id='site-root']" +
+                    "/div[@id='masterPage']/main[@id='PAGES_CONTAINER']/div[@id='SITE_PAGES']/div[@id='TRANSITION_GROUP']" +
+                    "/div[@id='oea74']/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/article[1]" +
+                    "/section[2]/div[6]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]/div[1]/input[1]"));
+        assertEquals(productPage.Order4("4"), c);
+        productPage.Order4("4").clear();
+        productPage.Order4("4").sendKeys("4");
+
+    }
+    @Test (priority = 11)
+    public void searchInstagram() {
+        WebElement e = driver.findElement(By.xpath("//wix-image[@id='img_1_comp-kjjw5jp2']"));
+        Assert.assertEquals(searchPage.Instagram(), e);
+        searchPage.Instagram().click();
+
+    }
+    @Test (priority = 12)
+    public void CheckForSlogan() {
+        WebElement L = driver.findElement(By.xpath("//span[contains(text(),'ליזרד דיזיין - בית דפוס וסטודיו לעיצוב גרפי - מתנו')]"));
+        Assert.assertEquals(searchPage.Slogan("ליזרד דיזיין - בית דפוס וסטודיו לעיצוב גרפי - מתנות ממותגות"), L);
+
+    }
+    @Test (priority = 13)
+    public void getRegistration() {
+
+        WebElement r = driver.findElement(By.xpath("//input[@id='input_comp-kxggya4q1']"));
+        assertEquals(searchPage.Registration("mrlong547@gmail.com"), r);
+        searchPage.Registration("mrlong547@gmail.com").submit();
+
+    }
+    @Test (priority = 14)
+    public void GoToMainWebSite(){
+        WebElement b = driver.findElement(By.linkText("www.lizarddesign.co.il"));
+        Assert.assertEquals(searchPage.MainWebsite(), b);
+        searchPage.MainWebsite().click();
+
+    }
+    @Test (priority = 15)
+    public void ContactUs(){
+        WebElement b = driver.findElement(By.linkText("Lizard.etsy87@gmail.com"));
+        Assert.assertEquals(searchPage.EMail(), b);
+        searchPage.EMail().click();
+
+    }
+    public void tearDown() throws IOException {
+        // utilities.screenshot();
+        super.tearDown();
+    }
+}
